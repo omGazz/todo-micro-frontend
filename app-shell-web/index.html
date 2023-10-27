@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo-Web</title>
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        min-height: 100%;
+      }
+
+      #todo-list {
+        position: absolute;
+        width: 300px;
+        left: 0;
+        top: 100px;
+        background-color: aquamarine;
+        height: 100%;
+      }
+
+      #todo-selected {
+        position: absolute;
+        left: 300px;
+        top: 100px;
+        background-color: tomato;
+        width: 100%;
+        height: 100%;
+      }
+
+      #todo-add {
+        position: absolute;
+        right: 100px;
+        top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>APP SHELL WEB</h1>
+    <iframe
+      src="../todo-list/index.html"
+      id="todo-list"
+      frameborder="0"
+    ></iframe>
+    <iframe
+      src="../todo-selected/index.html"
+      id="todo-selected"
+      frameborder="0"
+    ></iframe>
+    <iframe
+    src="../todo-add/index.html"
+    id="todo-add"
+    frameborder="0"
+  ></iframe>
+  </body>
+</html>
