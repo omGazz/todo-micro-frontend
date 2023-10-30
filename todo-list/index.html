@@ -6,16 +6,43 @@
     <title>ToDo-List</title>
   </head>
   <body>
-    <li id="todo-1">todo 1</li>
-    <li id="todo-2">todo 2</li>
-    <li id="todo-3">todo 3</li>
-    <li id="todo-4">todo 4</li>
+    <div id="task-list-container"></div>
   </body>
 </html>
 
 <script>
-  document.getElementById("todo-1").addEventListener("click", function (ev) {
-    sendMessageToTodoSelected(ev.target.innerText);
+  let taskList = [
+    {
+      title: "demo",
+      description: "create a demo app for micro-frontend",
+      done: false,
+    },
+    {
+      title: "article",
+      description: "write article and publish it on Medium",
+      done: false,
+    },
+    {
+      title: "workout",
+      description: "10:00 AM", 
+      done: false,
+    },
+    {
+      title: "meditation",
+      description: "Lorem ipsum dolor metus",
+      done: false,
+    },
+  ];
+
+  const taskListContainerEl = document.getElementById("task-list-container");
+  taskList.forEach((task) => {
+    taskListContainerEl.innerHTML += `<li id="${task.title}" class="task">${task.title}</li>`;
+  });
+
+  document.querySelectorAll(".task").forEach((task) => {
+    task.addEventListener("click", function (ev) {
+      sendMessageToTodoSelected(ev.target.innerText);
+    });
   });
 
   function sendMessageToTodoSelected(selectedTask) {
