@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo-List</title>
-</head>
-<body>
-    <li>todo 1</li>
-    <li>todo 2</li>
-    <li>todo 3</li>
-    <li>todo 4</li>
-</body>
+  </head>
+  <body>
+    <li id="todo-1">todo 1</li>
+    <li id="todo-2">todo 2</li>
+    <li id="todo-3">todo 3</li>
+    <li id="todo-4">todo 4</li>
+  </body>
 </html>
+
+<script>
+  document.getElementById("todo-1").addEventListener("click", function (ev) {
+    sendMessageToTodoSelected(ev.target.innerText);
+  });
+
+  function sendMessageToTodoSelected(selectedTask) {
+    const message = {
+      type: "selectedTask",
+      task: selectedTask,
+    };
+    parent.postMessage(message, "*");
+  }
+</script>

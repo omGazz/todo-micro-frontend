@@ -40,19 +40,35 @@
   <body>
     <h1>APP SHELL WEB</h1>
     <iframe
-      src="../todo-list/index.html"
+      src="http://localhost:8081"
       id="todo-list"
       frameborder="0"
     ></iframe>
     <iframe
-      src="../todo-selected/index.html"
+      src="http://localhost:8082"
       id="todo-selected"
       frameborder="0"
     ></iframe>
     <iframe
-    src="../todo-add/index.html"
+    src="http://localhost:8083"
     id="todo-add"
     frameborder="0"
   ></iframe>
   </body>
 </html>
+
+<script>
+      const appTodoSelected = document.getElementById("todo-selected");
+
+        window.addEventListener('message', (event) => {
+        if (event.origin === 'http://localhost:8081') {
+          if (event.data.type === 'selectedTask') {
+            const newTask = event.data;
+            console.log(`we're in APP-SHELL-WEB ${newTask.task} of type ${newTask.type}`)
+            console.log(`we're in APP-SHELL-WEB origin ${event.origin}`)
+
+            appTodoSelected.contentWindow.postMessage(newTask,'*')
+          }
+        }
+      });
+</script>
