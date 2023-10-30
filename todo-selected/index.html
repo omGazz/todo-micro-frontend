@@ -7,17 +7,21 @@
 </head>
 <body>
     <h1>TODO SELECTED</h1>
-    <h1></h1>
+    <div id="todo-container"></div>
 </body>
 </html>
 
 <script>
+        const todoContainerEl = document.getElementById("todo-container");
+
         window.addEventListener('message', (event) => {
         if (event.origin === 'http://localhost:8080') {
           if (event.data.type === 'selectedTask') {
             const newTask = event.data.task;
             console.log(`we're in TODO-SELECTED ${newTask}`)
             console.log(`we're in TODO-SELECTED origin ${event.origin}`)
+
+            todoContainerEl.innerHTML = `<p>${ newTask }</p>`;
           }
        }
       });
